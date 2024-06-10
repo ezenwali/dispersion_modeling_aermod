@@ -1,0 +1,170 @@
+\section{Introduction}
+Gas flaring emissions from offshore oil and gas platforms can pose significant environmental and health risks due to the release of pollutants. Studies have demonstrated that flaring can result in elevated levels of \NOx\ and \SOtwo, which act as precursors to acid rain and ground-level ozone formation, impacting both local and regional air quality \cite{fawole2019dispersion}. Moreover, particulate matter (\(\PMtwoFive\)) from flaring activities can contribute to respiratory and cardiovascular ailments \cite{khaleghi2023methane}. Therefore, effective monitoring and regulation are essential to mitigate these impacts.
+
+In the assessment of dispersion and concentration, meteorological conditions such as wind speed, temperature, and humidity are crucial factors. High wind speeds are advantageous as they aid in dispersing pollutants, thus reducing their concentrations at ground level. Conversely, low wind speeds can lead to higher pollutant concentrations near the source. Temperature inversions exacerbate air quality issues by trapping pollutants close to the ground within a layer of warm air \cite{an2016atmospheric}. Moreover, the physical attributes of the flare, including its height and heat content, significantly influence dispersion patterns. Taller flares generally disperse pollutants over a wider area, while shorter flares with lower heat content can cause higher concentrations of pollutants near the emission source \cite{mirrezaei2019impact}.
+
+Considering the stochastic nature of pollutant dispersion, variables such as the distance from source, meteorological conditions, and topography should be taken into account when selecting statistical sample points, which can be a costly endeavor. Consequently, simulation is essential to cover a range of potential scenarios \cite{fawole2019dispersion,christoudias2014atmospheric}.
+
+\subsection{Study area}
+The Hibernia platform, one of the largest offshore oil production facilities in Newfoundland and Labrador, Canada and positioned at latitude $46.75^\circ$ and longitude $-48.78^\circ$, is a significant source of gas flaring emissions. The platform's remote offshore location presents distinct challenges for monitoring and managing these emissions, In line with these considerations, this study seeks to examine how meteorological conditions influence the dispersion of gas flaring emissions from the Hibernia platform using the AERMOD dispersion model. This work concentrate on key pollutants such as \SOtwo, \NOx, and \PMtwoFive, exploring how factors like wind speed, temperature, and humidity impact their dispersion patterns. By simulating various meteorological scenarios, the research aims to shed light on potential impacts on air quality in nearby coastal regions and to provide insights into strategies for mitigating adverse effects.
+
+The subsequent sections outline a systematized review, research methodology, including input data, validation plan, and model boundaries.
+
+% Literature Review
+
+
+\section{Literature Review}
+Given the significant health and environmental consequences associated with flaring, a diverse array of modeling techniques has been employed to assess and mitigate these impacts. A systematized review of the literature underscores the importance of such methods, yet highlights a critical research gap: the need for studies that specifically address the influence of meteorological conditions on gas flaring emissions and their dispersion patterns, particularly in unique geographical locales like the Hibernia Platform in Newfoundland and Labrador.
+
+Recent research offers various approaches to understanding pollutant dispersion from flaring. \cite{popovicheva2022siberian} applied a Lagrangian particle dispersion model to assess how emissions in Arctic flaring sites are affected by cold weather conditions and low-level inversions, suggesting a complex interaction between weather conditions and pollutant behavior. Similarly, \cite{miao2014multi} utilized a multi-layer atmospheric model to explore the vertical and horizontal spread of emissions in urban environments. Additionally, \cite{caseiro2023quantification} integrated satellite observations with ground-based sensors to track and quantify flaring emissions in Persian Gulf between Qatar and Iran, providing a comprehensive framework to understand dispersion patterns over time, an approach that could be adapted to the isolated settings of Newfoundland and Labrador.
+
+To further emphasize the impact of weather on dispersion, a study by \cite{fawole2019dispersion,nwosisi2020dispersion} investigated how varying wind speeds and directions affect the dispersion of pollutants in coastal areas, revealing significant variability in dispersion patterns based on wind conditions alone. Another pertinent study by \cite{henao2017direct} analyzed the effect of precipitation on the deposition and dispersion of particulate matter, showing that wet conditions can substantially alter the fate of airborne pollutants. Additionally, \cite{wallace2010topographic} explored the impact of temperature inversions on air quality, demonstrating how such meteorological phenomena can trap pollutants close to the ground, exacerbating local air quality issues.
+
+These insights into the meteorological influences on dispersion provide a crucial backdrop for the introduction of AERMOD. Central to our discussion, AERMOD is a sophisticated atmospheric dispersion model developed by the U.S. Environmental Protection Agency (EPA). It is designed to estimate pollutant concentrations by incorporating both emissions data and meteorological influences, making it ideal for regulatory and environmental impact assessments. Studies by \cite{cimorelli2005aermod,amoatey2019performance} have highlighted AERMOD's effectiveness in modelling complex dispersion patterns across various terrains and handling emissions from multiple sources, respectively.
+
+Further leveraging AERMOD, \cite{afzali2017prediction} also validated AERMOD's precision in modelling pollutant dispersion over coastal regions affected by land-sea breezes, crucial for areas like Newfoundland and Labrador.
+
+Considering the robustness and adaptability of AERMOD, it has been selected for our study on the Hibernia Platform. This model's integration of complex meteorological data and varied emission scenarios will be invaluable in accurately predicting the dispersion of flaring emissions under the distinctive environmental conditions of Newfoundland and Labrador. This approach aims to provide a detailed assessment of potential air quality impacts and contribute to more effective environmental management practices in the region.
+\section{Methodology}
+This section provides an in-depth description of the modeling setup, the emission rates from flaring activities at the facility, the meteorological parameters employed, and the composition of the gas burnt which are input data for the AERMOD model as illustrated in figure \ref{data-input-aermod}
+\subsection{Meteorological Data}
+
+In AERMOD dispersion modeling, precise meteorological data plays a pivotal role. Both surface and upper air data are typically essential for capturing the atmospheric conditions that impact pollutant dispersion. However, due to the unavailability of upper air sounding data, this study exclusively utilizes surface meteorological data. This includes hourly measurements of temperature, wind direction and speed, relative humidity, and station pressure. Throughout the model year, prevailing wind directions were observed to be west during winter and west-southwest in summer. Temperature fluctuations ranged from -11°C to 25°C.
+
+To address the absence of upper air sounding data, AERMOD employs a methodology that estimates the required upper air parameters based on available surface data. This method involves using default vertical profiles or adjusting them based on surface data to approximate the effects of atmospheric stratification and mixing heights on pollutant dispersion. This ensures robust modeling and an accurate representation of dynamic atmospheric conditions.
+
+\subsection{Stack Physical Parameters:}
+The stack on the platform has a height of 47 meters and a diameter of 3 meters, as specified in a previous modelling of the Hebron Project \cite{Hebron2010}.
+
+\subsection{Emission and Combustion Parameters in Dispersion Modeling}
+
+For this study, we simulated the dispersion of \NOtwo, CO, and \PMtwoFive. The emission rates from this facility, averaged for 2022, are 30 \gs, 38.5 \gs, and 3.7 \gs~respectively. The gas volume flared from this facility is estimated using satellite sensors, and for our case, it is 41 m\textsuperscript{3}/s in 2022 \cite{WorldBankFlaring}.
+
+To model the dispersion of emissions from flaring accurately, pseudo-parameters such as effective stack height, effective exit velocity, and effective stack diameter are calculated. These parameters simulate the plume's behavior as if emitted from a point source at the flame tip, accounting for air entrainment, buoyancy, heat loss due to radiation (assumed  25\% as suggested by \cite{idriss2003emergency}) and momentum. This approach ensures more accurate plume rise and dispersion predictions in advanced models like AERMOD, preventing underestimation of pollutant concentrations at ground level \cite{Ontario2024}.
+
+The mass flow rate $\dot{m}$ was calculated from the volume flow rate using a gas density range of 600 to 900 \GramMeterCube, as recommended by \cite{elsharkawy2004efficient}. Flared gas consists of various components, with methane being the primary compound by mole fraction. The detailed composition utilized in this study can be found in Table~\ref{tab:gas_composition}.
+
+\noindent 1. \text{Heat Release Rate}: $H_r$, 2. \text{Enthalpy Change}: $\Delta H_c$, 3. \text{Buoyancy Flux}: $F_b$, 4. \text{Momentum Flux}: $F_m$, 5. \text{Exit Gas Temperature}: $T_{exit}$, 6. \text{Effective Stack Height}: $H_{eff}$, 7. \text{Effective Stack Diameter}: $D_{eff}$, 8. \text{Effective Exit Velocity}: $V_{eff}$.
+
+
+\begin{equation}
+    \label{eq:heatRelease}
+    H_{r} = \dot{m} \cdot \DeltaHc \cdot F_{r}
+\end{equation}
+
+\begin{equation}
+    \label{eq:enthalpyChange}
+    \DeltaHc = \sum (x_{i} \cdot \Delta H_{c,i})
+\end{equation}
+
+
+
+\begin{table}[h]
+    \centering
+    \caption{Gas composition parameters} 
+    \label{tab:gas_composition}
+    \begin{tabular}{|c|c|c|c|}
+    \hline
+    Compound & Formula & Percent in Natural Gas & \(\Delta H_c \) (KJ/g) \\ \hline
+    Methane & CH\(_4\) & 96.6428 & -55.5 \\ \hline
+    Ethane & C\(_2\)H\(_6\) & 0.8981 & -51.9 \\ \hline
+    Propane & C\(_3\)H\(_8\) & 0.1095 & -50.3 \\ \hline
+    Butane & C\(_4\)H\(_{10}\) & 0.04 & -49.5 \\ \hline
+    Carbon Dioxide & CO\(_2\) & 0.5021 & -8.94 \\ \hline
+    \end{tabular}
+\end{table}
+
+
+
+\begin{equation}
+    F_b = g \times \frac{H_r}{\pi \times \rho_{\text{air}} \times T_{\text{ambient}} \times C_p} 
+\end{equation}
+
+\begin{equation}
+    F_m = \frac{V_s H_r}{\pi C_p \rho_a (T_{exit} - T_{ambient})} 
+\end{equation}
+
+
+
+\begin{equation}
+T_{exit} = T_{ambient} + \frac{H_r}{\dot{m} \cdot C_p}
+\end{equation}
+
+
+\begin{equation}
+    H_{\text{eff}} = H_{\text{actual}} + (4.56 \times 10^{-3} \times \left( \frac{H_r}{4.1868} \right)^{0.478} 
+\end{equation}
+
+\begin{equation}
+    D_{\text{eff}} = 2 \times \sqrt{\frac{(F_b \times T_{\text{exit}})}{g \times V_{\text{eff}} \times (T_{\text{exit}} - T_{\text{ambient}})}} 
+\end{equation}
+
+\begin{equation}
+    V_{\text{eff}} = g \times \frac{F_m}{F_b} \times \frac{(T_{\text{exit}} - T_{\text{ambient}})}{T_{\text{ambient}}} 
+\end{equation}
+
+
+
+Where:
+\begin{itemize}
+    \item $\dot{m}$: Mass flow rate of the gas (g/s)
+    \item $F_r$: Heat loss fraction due to radiation
+    \item $C_p$: Specific Heat Capacity of air (J/g·K)
+    \item $T_{ambient}$: Ambient temperature (K)
+    \item $x_i$: Mole fraction of each gas component
+    \item $\Delta H_{c,i}$: Heat combustion enthalpy for each gas component (J/g)
+    \item $H_r$: Heat release rate (J/s)
+    \item $\rho_{\text{air}}$: Density of air (g/m³)
+    \item $V_s$: Acutal velocity (m/s)
+    \item $H_{\text{actual}}$: Actual flare height (m)
+    \item $g$: Acceleration due to gravity (m/s²)
+    \item $\rho_a$: Density of air at specific conditions (g/m³)
+\end{itemize}
+
+
+\subsection{Terrain Data}
+This an offshore platform there is no need for a terrain data, as the surrounding area is predominantly water without significant elevation changes.
+
+\subsection{Model Boundaries and Domain}
+The model boundaries and domain are defined as follows:
+
+\noindent \textbf{Horizontal Boundaries:} The horizontal boundaries extend 5 km in all directions from the Hibernia platform. 
+
+
+\noindent \textbf{Spatial Resolution:} A grid resolution of 1 km x 1 km is utilized across the modeling domain, with finer resolutions of 500 m x 500 m applied near the platform to capture detailed variations in pollutant concentrations.
+
+\noindent \textbf{Temporal Resolution:} Hourly meteorological data is employed to capture the temporal variations in atmospheric conditions. The simulation covers a full year to account for seasonal variations in emissions and meteorological conditions.
+
+\noindent \textbf{Key Consideration:} The flare stack on the platform is accurately represented within the domain, all other emission sources are excluded.
+
+\section*{Model Result Validation Plan}
+The purpose of this validation plan is to verify the accuracy and dependability of the AERMOD dispersion model results for the Hibernia platform. This will be achieved by comparing the results with a  air emissions and dispersion modeling report conducted for the Hebron Project by Stantec Consulting Ltd. in June 2010 \cite{Hebron2010}. It is important to note that the Hebron Project report has some limitations, such as the use of pseudo-parameters and an unclear model domain in relation to emissions from other sources. These limitations will be carefully considered during the validation process.
+
+\section*{Validation Steps}
+
+\begin{enumerate}
+    \item \textbf{Data Comparison}:
+    \begin{itemize}
+        \item Once the AERMOD simulation is completed, we  will extract pertinent data from the Hebron Project report, such as emission rates, stack parameters, and dispersion modeling results for similar pollutants.
+        \item Address the limitations identified in the Hebron Project report by adjusting for pseudo-parameters and ensuring that only comparable emission sources are taken into account.
+    \end{itemize}
+    
+    \item \textbf{RMSE Calculation}:
+    \begin{itemize}
+        \item Calculate the Root Mean Square Error (RMSE) to quantify the differences between this predictions and Hebron Project results.
+        \[
+        \text{RMSE} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (P_{\text{AERMOD},i} - P_{\text{Hebron},i})^2}
+        \]
+        where \( P_{\text{AERMOD},i} \) is the predicted value by AERMOD model, \( P_{\text{Hebron},i} \) is the value from the Hebron Project report for \(i \in \{\text{CO}, \text{NO}_2, \text{PM}_{2.5}\}\), and \( n \) is the number of observations.
+    \end{itemize}
+\end{enumerate}
+By comparing AERMOD predictions with the Hebron Project study, this validation plan aims to ensure the model's accuracy, considering the identified limitations. 
+
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{./assets/flow_chart.png}
+    \caption{Data input for AERMOD.}
+    \label{data-input-aermod}
+\end{figure}
+    

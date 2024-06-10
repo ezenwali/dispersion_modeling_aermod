@@ -1,0 +1,23 @@
+# Environment-specific files
+.env*
+.env
+venv/
+env/
+dispersion.ipynb
+
+# LaTeX specific files
+*.aux
+*.log
+*.fls
+*.out
+*.blg
+*.cb2
+*.bbl
+*.fdb_latexmk
+*.synctex.gz
+
+
+
+
+
+

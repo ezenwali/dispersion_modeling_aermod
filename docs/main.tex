@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{geometry}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\usepackage{apacite}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{appendix} 
+
+\geometry{a4paper, margin=1in}
+\bibliographystyle{apacite}
+
+\newcommand{\COtwo}{CO$_2$}
+\newcommand{\CHfour}{\ensuremath{\mathrm{CH}_4}}
+\newcommand{\NOtwo}{\ensuremath{\mathrm{NO}_2}}
+\newcommand{\McubeS}{\ensuremath{\mathrm{m}_3/s}}
+\newcommand{\SOtwo}{\ensuremath{\mathrm{SO}_2}}
+\newcommand{\NOx}{\ensuremath{\mathrm{NO}_x}}
+\newcommand{\SOx}{\ensuremath{\mathrm{SO}_x}}
+\newcommand{\PMtwoFive}{\ensuremath{\mathrm{PM}_{2.5}}}
+\newcommand{\gs}{\ensuremath{\mathrm{g/s}}}
+\newcommand{\Hr}{\ensuremath{H_{\mathrm{r}}}}
+\newcommand{\DeltaHc}{\ensuremath{\Delta H_{c}}}
+\newcommand{\GramMeterCube}{\ensuremath{\mathrm{g/m}^3}}
+
+\newcommand{\heatReleaseRate}{
+    H_{r} = \dot{m} \cdot \Delta H_{c}
+}
+
+\title{\textbf{Meteorological Influence on Gas Flaring Emissions Dispersion from the Hibernia Platform in Newfoundland and Labrador.}}
+\author{Shedrach Ezenwali}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\input{sections/extendedabstract}
+% \input{sections/synopsis}
+
+\newpage
+\bibliography{references}
+
+\begin{appendix}
+    \centering 
+    \section*{Appendix} 
+    \subsection*{Aermod Initial Setup} 
+    \includegraphics[width=1\textwidth]{./assets/aermod.png} 
+
+    \subsection*{Distance from study site to closest Air monitoring station} 
+    \includegraphics[width=1\textwidth]{./assets/study_site.png}
+\end{appendix}
+    
+
+\end{document}
